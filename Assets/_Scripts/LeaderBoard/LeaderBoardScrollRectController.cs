@@ -5,10 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
+[RequireComponent(typeof(UnityEngine.UI.LoopScrollRect))]
+[DisallowMultipleComponent]
 public class LeaderBoardScrollRectController : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
 {
-    [SerializeField] private LeaderBoardItemController leaderBoardItemPrefab;
+    public LeaderBoardItemController leaderBoardItemPrefab;
+	public int totalCount = -1;
+
 	[SerializeField] private LoopScrollRect leaderBoardScroller;
+
 	private List<Member> leaderBoardMemeber = new List<Member>();
 	private Stack<Transform> pool = new Stack<Transform>();
 	public GameObject GetObject(int index)
@@ -31,18 +36,21 @@ public class LeaderBoardScrollRectController : MonoBehaviour, LoopScrollPrefabSo
 	public void Init(List<Member> _leaderBoardMemeber)
     {
 		leaderBoardMemeber = _leaderBoardMemeber;
-		leaderBoardScroller.prefabSource = this;
-		leaderBoardScroller.dataSource = this;
-		leaderBoardScroller.totalCount = leaderBoardMemeber.Count;
-		leaderBoardScroller.RefillCells();
 	}
 
+	private void OnEnable()
+	{
+		if (leaderBoardMemeber.Count > 0)
+		{
+			totalCount = leaderBoardMemeber.Count;
+			leaderBoardScroller.prefabSource = this;
+			leaderBoardScroller.dataSource = this;
+			leaderBoardScroller.totalCount = totalCount;
+			leaderBoardScroller.RefillCells();
+		}
+	}
 	public void ProvideData(Transform transform, int idx)
 	{
-		if (transform.gameObject.activeInHierarchy)
-		{
-			transform.SendMessage("SetMemberData", leaderBoardMemeber[idx]);
-		}
-		
+		transform.SendMessage("SetMemberData", leaderBoardMemeber[idx]);
 	}
 }
