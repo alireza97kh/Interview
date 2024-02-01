@@ -89,4 +89,9 @@ public class DobeilHelper : Singleton<DobeilHelper>
         GL.Clear(true, true, new Color(0, 0, 0, 0));
         Graphics.DrawTexture(new Rect(0, 0, 1, 1), texture);
     }
+
+    public string StripQuote(string str)
+    {
+        return str.Replace("\"", "");
+	}
 }

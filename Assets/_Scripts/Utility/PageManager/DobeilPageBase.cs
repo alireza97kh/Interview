@@ -17,16 +17,15 @@ public abstract class DobeilPageBase : MonoBehaviour
     }
 	IEnumerator SetProperty()
     {
-        yield return new WaitForSeconds(0.5f);
+		SetPageEvents();
+		SetPageProperty();
+		yield return new WaitForSeconds(0.5f);
         if (!DobeilPageManager.Instance.activePage)
         {
             DobeilPageManager.Instance.activePage = this;
             isActivated = true;
             ChangePageState(true);
         }
-
-        SetPageEvents();
-        SetPageProperty();
     }
 
     public void ChangePageState(bool active, object data = null)
@@ -55,4 +54,9 @@ public abstract class DobeilPageBase : MonoBehaviour
     protected abstract void HidePage(object data = null);
     protected abstract void SetPageEvents();
     protected abstract void SetPageProperty();
+
+    public virtual void Back()
+    {
+        DobeilPageManager.Instance.BackToLastPage();
+    }
 }

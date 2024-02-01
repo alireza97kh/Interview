@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fb7e2021d810147bc19a5a109d2f0b, type: 3}
+  m_Name: LeaderBoardData
+  m_EditorClassIdentifier: 
+  leaderBoardAvararsClass:
+  - avatarId: 0
+    avatarSprite: {fileID: 1519292311, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 1
+    avatarSprite: {fileID: 1765417647, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 2
+    avatarSprite: {fileID: -868531639, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 3
+    avatarSprite: {fileID: 679805437, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 4
+    avatarSprite: {fileID: 1257401691, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 5
+    avatarSprite: {fileID: -684307015, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 6
+    avatarSprite: {fileID: 1161578734, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 7
+    avatarSprite: {fileID: -214347536, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 8
+    avatarSprite: {fileID: -1056817578, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 9
+    avatarSprite: {fileID: -1740887589, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 10
+    avatarSprite: {fileID: -261371006, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 11
+    avatarSprite: {fileID: 1638258631, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 12
+    avatarSprite: {fileID: 220044058, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 13
+    avatarSprite: {fileID: -1540322693, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 14
+    avatarSprite: {fileID: -1653932340, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 15
+    avatarSprite: {fileID: 1741131725, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 16
+    avatarSprite: {fileID: -620231205, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 17
+    avatarSprite: {fileID: 95853355, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 18
+    avatarSprite: {fileID: 1636307789, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 19
+    avatarSprite: {fileID: -1972838396, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 20
+    avatarSprite: {fileID: -1425555877, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 21
+    avatarSprite: {fileID: -753079176, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 22
+    avatarSprite: {fileID: 430441395, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  - avatarId: 23
+    avatarSprite: {fileID: -195959114, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  defaultAvatar: {fileID: 1519292311, guid: 99ab568b6cc2a8c4fa2ecbd6b87ba1f7, type: 3}
+  leaderBoardFrameClasses:
+  - frameId: 0
+    frameSprite: {fileID: -671236115, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 1
+    frameSprite: {fileID: -2075114847, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 2
+    frameSprite: {fileID: 39116353, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 3
+    frameSprite: {fileID: 1486901359, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 4
+    frameSprite: {fileID: -348818145, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 5
+    frameSprite: {fileID: 2131715390, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 6
+    frameSprite: {fileID: -106676431, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 7
+    frameSprite: {fileID: -1426510059, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  - frameId: 8
+    frameSprite: {fileID: -1756227691, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}
+  defaultFrame: {fileID: -1756227691, guid: aeabcc2c96b1b7f438e764b5b2bc1994, type: 3}

@@ -28,9 +28,12 @@ public class LeaderBoardItemController : MonoBehaviour
         if (data is Member)
         {
             Member member = (Member)data;
-            Debug.Log((data as Member).Username);
             userNameTxt.text = member.Username;
-            goldMedalObject.SetActive(member.GoldMedals > 0);
+
+            avatarImage.sprite = VisualData.Instance.LeaderBoardData.GetAvatar(member.AvatarIndex);
+            frameImage.sprite = VisualData.Instance.LeaderBoardData.GetFrame(member.FrameIndex);
+
+			goldMedalObject.SetActive(member.GoldMedals > 0);
             silverMedalObject.SetActive(member.SilverMedals > 0);
             bronzeMedalObject.SetActive(member.BronzeMedals > 0);
 
