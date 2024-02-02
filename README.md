@@ -3,7 +3,7 @@
 in this project I've used some of utility that I wrote before you can find them in 
 https://github.com/alireza97kh/UnityUtility.git
 
-main pages is 
+main pages are
 
 main menu
 
