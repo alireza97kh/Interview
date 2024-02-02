@@ -21,6 +21,7 @@ daily rewards pop up
 it shows rewards that stored in DailyRewardData which is a scriptable object and you can easily edit, add or remove rewards on it.
 
 ever reward type inheritance from RewardBase which is an abstract class and you can override functions like
+
 "Init" : this function initial rewards and set data like reward sprite or reward count 
 
 "Select" : which called when user select that reward and add it to his profile 
