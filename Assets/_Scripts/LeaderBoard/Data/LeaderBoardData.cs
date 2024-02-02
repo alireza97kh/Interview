@@ -18,8 +18,6 @@ public class LeaderBoardData : ScriptableObject
         if (leaderBoardAvatars.TryGetValue(avatarId, out LeaderBoardAvararClass avatar))
             return avatar.avatarSprite;
 
-        Debug.LogError(avatarId);
-
         return defaultAvatar;
     }
 

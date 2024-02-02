@@ -21,14 +21,7 @@ public class VisualData : MonoSingleton<VisualData>
 		{
 			LeaderBoardData.leaderBoardFrames.Add(item.frameId, item);
 		}
-
-		int lastRewardGet = SaveManager<int>.LoadData(SaveManagerKeys.LastRewardGet.ToString());
-
-		for (int i = 0; i < DailyRewardData.dailyRewards.Count; i++)
-		{
-			DailyRewardData.dailyRewards[i].avaiableDate = System.DateTime.Now.AddHours(i * DailyRewardData.dayHours);
-			DailyRewardData.dailyRewards[i].received = (i < lastRewardGet);
-		}
+		
 
 
 	}

@@ -36,10 +36,6 @@ public class LeaderBoardScrollRectController : MonoBehaviour, LoopScrollPrefabSo
 	public void Init(List<Member> _leaderBoardMemeber)
     {
 		leaderBoardMemeber = _leaderBoardMemeber;
-	}
-
-	private void OnEnable()
-	{
 		if (leaderBoardMemeber.Count > 0)
 		{
 			totalCount = leaderBoardMemeber.Count;

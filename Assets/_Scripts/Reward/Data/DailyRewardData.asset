@@ -14,41 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dailyRewards:
   - received: 0
-    reard:
+    dayIndex: 1
+    reward:
       type: 0
       rewardIcon: {fileID: 21300000, guid: f6140749735579048a0e9614793474b5, type: 3}
       count: 50
   - received: 0
-    reard:
+    dayIndex: 2
+    reward:
       type: 0
       rewardIcon: {fileID: 21300000, guid: f6140749735579048a0e9614793474b5, type: 3}
       count: 100
   - received: 0
-    reard:
+    dayIndex: 3
+    reward:
       type: 0
       rewardIcon: {fileID: 21300000, guid: f6140749735579048a0e9614793474b5, type: 3}
       count: 200
   - received: 0
-    reard:
+    dayIndex: 4
+    reward:
       type: 0
       rewardIcon: {fileID: 21300000, guid: f6140749735579048a0e9614793474b5, type: 3}
       count: 500
   - received: 0
-    reard:
+    dayIndex: 5
+    reward:
       type: 1
-      rewardIcon: {fileID: 21300000, guid: c1b18590de3502546bf41d5ee5e0ae4e, type: 3}
+      rewardIcon: {fileID: 21300000, guid: 9e76726b050967d44b9f763ad071d3f7, type: 3}
       count: 20
   - received: 0
-    reard:
+    dayIndex: 6
+    reward:
       type: 1
-      rewardIcon: {fileID: 21300000, guid: c1b18590de3502546bf41d5ee5e0ae4e, type: 3}
-      count: 50
+      rewardIcon: {fileID: 21300000, guid: 9e76726b050967d44b9f763ad071d3f7, type: 3}
+      count: 40
   - received: 0
-    reard:
+    dayIndex: 7
+    reward:
       type: 1
-      rewardIcon: {fileID: 21300000, guid: c1b18590de3502546bf41d5ee5e0ae4e, type: 3}
+      rewardIcon: {fileID: 21300000, guid: 9e76726b050967d44b9f763ad071d3f7, type: 3}
       count: 100
-  dayHours: 1
+  hoursOfDay: 0.05
   dailyRewardsPrefabs:
   - rewardType: 0
     rewardPrefab: {fileID: 1836961840246228701, guid: b3ddec31b9a4ce24b92dbc16c5357b49, type: 3}

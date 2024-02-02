@@ -1,4 +1,5 @@
 using Dobeil;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public abstract class RewardBase : MonoBehaviour
 	[SerializeField] private Color receivedColor;
 	[SerializeField] private Color normalColor;
 	[SerializeField] private Image rewardBg;
+    [SerializeField] private Button rewardBtn;
 
     private DailyRewardClass rewardData;
 	public virtual void Init(DailyRewardClass _rewardData)
@@ -20,11 +22,14 @@ public abstract class RewardBase : MonoBehaviour
         rewardImage.sprite = rewardData.reward.rewardIcon;
 		rewardCountText.text = rewardData.reward.count.ToString();
 		SetRewardBg(_rewardData.received);
+        rewardBtn.interactable = !_rewardData.received && (DateTime.Now > rewardData.avaiableDate);
 	}
 
     public virtual void Select()
     {
+        rewardData.received = true;
         DobeilEventManager.SendGlobalEvent("SHOW_REWARD", rewardData);
+        Init(rewardData);
     }
 
     public void SetRewardBg(bool received)

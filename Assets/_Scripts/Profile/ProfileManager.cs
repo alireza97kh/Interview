@@ -21,21 +21,23 @@ public class ProfileManager : MonoBehaviour
 
 	public void ShowReward(object data)
 	{
-		if (data is RewardDataBase)
+		if (data is DailyRewardClass)
 		{
-			RewardDataBase reward = data as RewardDataBase;
-			switch (reward.type)
+			DailyRewardClass reward = data as DailyRewardClass;
+			switch (reward.reward.type)
 			{
 				case RewardType.Coin:
-					GameData.Instance.playerProfile.coin += reward.count;
+					GameData.Instance.playerProfile.coin += reward.reward.count;
 					break;
 				case RewardType.Gem:
-					GameData.Instance.playerProfile.gem += reward.count;
+					GameData.Instance.playerProfile.gem += reward.reward.count;
 					break;
 				default:
 					break;
 			}
 			Init();
+			GameData.Instance.playerProfile.lastRewardIndex = reward.dayIndex;
+			SaveManager<PlayerProfileClass>.SaveData(SaveManagerKeys.PlayerProfile.ToString(), GameData.Instance.playerProfile);
 		}
 	}
 }

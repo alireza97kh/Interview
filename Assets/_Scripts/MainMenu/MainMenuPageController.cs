@@ -13,37 +13,12 @@ public class MainMenuPageController : DobeilPageBase
 	private List<Member> leaderBoardMemebers;
 	protected override void ShowPage(object data = null)
 	{
-		DobeilGameServiceBase.Instance.SendRequest(
-			baseUrl,
-			Dobeil.SendRequestMethods.GET,
-			callback: (result) =>
-			{
-				Debug.Log(result);
-				if (String.IsNullOrEmpty(result.Error))
-				{
-					leaderBoardMemebers = new List<Member>();
-					JSONObject leaderBoardData = JSONObject.Create(result.Text);
-					for (int i = 0; i < leaderBoardData.GetField("Members").count; i++)
-						leaderBoardMemebers.Add(GetMember(leaderBoardData.GetField("Members")[i]));
-				}
-			});
+		GameData.Instance.baseUrl = baseUrl;
 		profileManager.Init();
+		LoadingManager.Instance.HideLoading();
 	}
 
-	private Member GetMember(JSONObject memberData)
-	{
-		Member member = new Member()
-		{
-			UserId = int.Parse(memberData.GetField("UserId").ToString()),
-			AvatarIndex = int.Parse(memberData.GetField("AvatarIndex").ToString()),
-			FrameIndex = int.Parse(memberData.GetField("FrameIndex").ToString()),
-			Username = DobeilHelper.Instance.StripQuote(memberData.GetField("Username").ToString()),
-			GoldMedals = int.Parse(memberData.GetField("GoldMedals").ToString()),
-			SilverMedals = int.Parse(memberData.GetField("SilverMedals").ToString()),
-			BronzeMedals = int.Parse(memberData.GetField("BronzeMedals").ToString())
-		};
-		return member;
-	}
+	
 
 	protected override void HidePage(object data = null)
 	{
@@ -61,14 +36,30 @@ public class MainMenuPageController : DobeilPageBase
 		if (GameData.Instance.playerProfile == null)
 		{
 			GameData.Instance.playerProfile = new PlayerProfileClass();
+			GameData.Instance.playerProfile.firstLoginTime = DateTime.Now;
 			SaveManager<PlayerProfileClass>.SaveData(SaveManagerKeys.PlayerProfile.ToString(), GameData.Instance.playerProfile);
 		}
-		Debug.Log(GameData.Instance.playerProfile.playerName);
+		UpdateDailyRewardData();
 	}
 
 	public void LeaderBoardBtnClick()
 	{
-		DobeilPageManager.Instance.ShowPageByName("LeaderBoardPopUp", true, leaderBoardMemebers);
+		DobeilPageManager.Instance.ShowPageByName("LeaderBoardPopUp", true);
 	}
-	
+
+	public void DailyRewardBtnClick()
+	{
+		DobeilPageManager.Instance.ShowPageByName("DailyRewardPopUp", true);
+	}
+	private void UpdateDailyRewardData()
+	{
+		for (int i = 0; i < VisualData.Instance.DailyRewardData.dailyRewards.Count; i++)
+		{
+			VisualData.Instance.DailyRewardData.dailyRewards[i].avaiableDate =
+				GameData.Instance.playerProfile.firstLoginTime.AddHours(i * VisualData.Instance.DailyRewardData.hoursOfDay);
+
+			VisualData.Instance.DailyRewardData.dailyRewards[i].received = (i < GameData.Instance.playerProfile.lastRewardIndex);
+		}
+	}
+
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class DailyRewardData : ScriptableObject
 {
     public List<DailyRewardClass> dailyRewards = new List<DailyRewardClass>();
-    public int dayHours = 1;
+    public float hoursOfDay = 1;
 
     public List<DailyRewardsPrefab> dailyRewardsPrefabs = new List<DailyRewardsPrefab>();
 }
