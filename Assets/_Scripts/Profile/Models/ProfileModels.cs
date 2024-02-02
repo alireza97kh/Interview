@@ -8,7 +8,7 @@ namespace Dobeil
 		public int coin;
 		public int gem;
 		public int lastRewardIndex;
-		public DateTime firstLoginTime;
+		public string firstLoginTime;
 
 		public PlayerProfileClass()
 		{

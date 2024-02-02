@@ -3,6 +3,7 @@ using Dobeil;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,14 @@ public class MainMenuPageController : DobeilPageBase
 {
 	[SerializeField] private string baseUrl = "https://baghenegar.ir/api/ChampionsLeague/TopUserMedals";
 	[SerializeField] private ProfileManager profileManager;
-	private List<Member> leaderBoardMemebers;
 	protected override void ShowPage(object data = null)
 	{
 		GameData.Instance.baseUrl = baseUrl;
 		profileManager.Init();
 		LoadingManager.Instance.HideLoading();
+
+		if (GameData.Instance.playerProfile.lastRewardIndex == VisualData.Instance.DailyRewardData.dailyRewards.Count)
+			UpdateDailyRewardData();
 	}
 
 	
@@ -35,9 +38,7 @@ public class MainMenuPageController : DobeilPageBase
 		GameData.Instance.playerProfile = SaveManager<PlayerProfileClass>.LoadData(SaveManagerKeys.PlayerProfile.ToString());
 		if (GameData.Instance.playerProfile == null)
 		{
-			GameData.Instance.playerProfile = new PlayerProfileClass();
-			GameData.Instance.playerProfile.firstLoginTime = DateTime.Now;
-			SaveManager<PlayerProfileClass>.SaveData(SaveManagerKeys.PlayerProfile.ToString(), GameData.Instance.playerProfile);
+			SavePlayerProfile(new PlayerProfileClass());
 		}
 		UpdateDailyRewardData();
 	}
@@ -53,13 +54,35 @@ public class MainMenuPageController : DobeilPageBase
 	}
 	private void UpdateDailyRewardData()
 	{
-		for (int i = 0; i < VisualData.Instance.DailyRewardData.dailyRewards.Count; i++)
+		if (GameData.Instance.playerProfile.lastRewardIndex < VisualData.Instance.DailyRewardData.dailyRewards.Count)
 		{
-			VisualData.Instance.DailyRewardData.dailyRewards[i].avaiableDate =
-				GameData.Instance.playerProfile.firstLoginTime.AddHours(i * VisualData.Instance.DailyRewardData.hoursOfDay);
+			for (int i = 0; i < VisualData.Instance.DailyRewardData.dailyRewards.Count; i++)
+			{
+				DateTime _lastLoginTime = DateTime.ParseExact(GameData.Instance.playerProfile.firstLoginTime, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+				VisualData.Instance.DailyRewardData.dailyRewards[i].avaiableDate =
+					_lastLoginTime.AddHours(i * VisualData.Instance.DailyRewardData.hoursOfDay);
 
-			VisualData.Instance.DailyRewardData.dailyRewards[i].received = (i < GameData.Instance.playerProfile.lastRewardIndex);
+				VisualData.Instance.DailyRewardData.dailyRewards[i].received = (i < GameData.Instance.playerProfile.lastRewardIndex);
+			}
 		}
+		else
+		{
+			//Reset Daily Rewards
+			SavePlayerProfile(
+				new PlayerProfileClass(
+					GameData.Instance.playerProfile.playerName, 
+					GameData.Instance.playerProfile.coin, 
+					GameData.Instance.playerProfile.gem, 
+					0));
+
+		}
+	}
+
+	private void SavePlayerProfile(PlayerProfileClass profile)
+	{
+		GameData.Instance.playerProfile = profile;
+		GameData.Instance.playerProfile.firstLoginTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+		SaveManager<PlayerProfileClass>.SaveData(SaveManagerKeys.PlayerProfile.ToString(), GameData.Instance.playerProfile);
 	}
 
 }

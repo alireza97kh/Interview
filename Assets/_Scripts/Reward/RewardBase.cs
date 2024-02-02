@@ -21,6 +21,7 @@ public abstract class RewardBase : MonoBehaviour
         rewardData = _rewardData;
         rewardImage.sprite = rewardData.reward.rewardIcon;
 		rewardCountText.text = rewardData.reward.count.ToString();
+        dayIndexText.text = "Day " + rewardData.dayIndex.ToString();
 		SetRewardBg(_rewardData.received);
         rewardBtn.interactable = !_rewardData.received && (DateTime.Now > rewardData.avaiableDate);
 	}

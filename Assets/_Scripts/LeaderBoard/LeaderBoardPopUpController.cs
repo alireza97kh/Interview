@@ -10,6 +10,7 @@ public class LeaderBoardPopUpController : DobeilPageBase
 {
 
 	[SerializeField] private LeaderBoardScrollRectController leaderBoardScroller;
+	private List<Member> leaderBoardMemebers;
 	protected override void HidePage(object data = null)
 	{
 		
@@ -22,13 +23,16 @@ public class LeaderBoardPopUpController : DobeilPageBase
 
 	protected override void SetPageProperty()
 	{
-		
+		leaderBoardMemebers = new List<Member>();
 	}
 
 	protected override void ShowPage(object data = null)
 	{
-		LoadingManager.Instance.ShowLoading();
-		GetLeaderBoardData();
+		if (leaderBoardMemebers.Count == 0)
+		{
+			LoadingManager.Instance.ShowLoading();
+			GetLeaderBoardData();
+		}
 	}
 
 	private async void GetLeaderBoardData()
@@ -38,10 +42,8 @@ public class LeaderBoardPopUpController : DobeilPageBase
 			Dobeil.SendRequestMethods.GET,
 			callback: (result) =>
 			{
-				Debug.Log(result);
 				if (String.IsNullOrEmpty(result.Error))
 				{
-					List<Member> leaderBoardMemebers = new List<Member>();
 					JSONObject leaderBoardData = JSONObject.Create(result.Text);
 					for (int i = 0; i < leaderBoardData.GetField("Members").count; i++)
 						leaderBoardMemebers.Add(GetMember(leaderBoardData.GetField("Members")[i]));
